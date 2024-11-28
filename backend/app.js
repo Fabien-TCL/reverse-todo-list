@@ -5,7 +5,7 @@ const cors = require('cors');
 
 const app = express();
 
-// Useless Comment
+// Useless Comment 2
 app.use(cors());
 app.use(express.json());
 
