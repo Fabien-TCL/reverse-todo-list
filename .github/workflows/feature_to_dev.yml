@@ -1,0 +1,46 @@
+name: Feature to Dev CI/CD
+
+on:
+  push:
+    branches:
+      - dev  # Trigger when changes are pushed to dev branch
+
+jobs:
+  build-and-test:
+    name: Build and Test Project
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js (for both backend and frontend)
+      - name: Set up Node.js for Backend
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Set up Node.js for Frontend
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      # Step 3: Install backend dependencies
+      - name: Install Backend Dependencies
+        working-directory: ./backend
+        run: npm install
+
+      # Step 4: Install frontend dependencies
+      - name: Install Frontend Dependencies
+        working-directory: ./frontend
+        run: npm install
+
+      # Step 5: Run Unit Tests for both backend and frontend
+      - name: Run Backend Unit Tests
+        working-directory: ./backend
+        run: npm test
+
+      - name: Run Frontend Unit Tests
+        working-directory: ./frontend
+        run: npm test
