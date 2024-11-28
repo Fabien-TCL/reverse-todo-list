@@ -44,3 +44,10 @@ jobs:
       - name: Run Frontend Unit Tests
         working-directory: ./frontend
         run: npm test
+
+      - name: Merge dev to main
+        if: success()
+        uses: devmasx/merge-branch@v1.3.0
+        with:
+          target_branch: main
+          github_token: ${{ secrets.GITHUB_TOKEN }}
