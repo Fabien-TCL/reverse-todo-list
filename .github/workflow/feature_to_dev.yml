@@ -2,8 +2,7 @@ name: Feature to Dev
 
 on:
   push:
-    branches:
-      - dev  # Trigger when changes are pushed to dev branch
+    branches: ["dev"] # Triggered when there is a push in dev branch
 
 jobs:
   build-and-test:
