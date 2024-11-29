@@ -48,9 +48,18 @@ jobs:
         working-directory: ./frontend
         run: npm test
 
+      # Step 5: Start Services for E2E Tests
+      - name: Start Services
+        run: docker-compose up -d
+
+      # Step 6: Run E2E Tests
       - name: Run E2E Tests
         working-directory: ./e2e-tests
-        run: npm test 
+        run: npx mocha test.js
+
+      # Step 7: Stop Services
+      - name: Stop Services
+        run: docker-compose down
 
   build-and-push-docker:
     name: Build and Push Docker Images
