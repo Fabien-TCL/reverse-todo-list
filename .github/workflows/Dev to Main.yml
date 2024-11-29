@@ -39,7 +39,7 @@ jobs:
         working-directory: ./e2e-tests
         run: npm install
 
-      # Step 4: Run Unit Tests for both backend and frontend
+      # Step 4: Run Unit Tests for backend, frontend and e2e
       - name: Run Backend Unit Tests
         working-directory: ./backend
         run: npm test
@@ -48,7 +48,9 @@ jobs:
         working-directory: ./frontend
         run: npm test
 
-      
+      - name: Run E2E Tests
+        working-directory: ./e2e-tests
+        run: npm test 
 
   build-and-push-docker:
     name: Build and Push Docker Images
